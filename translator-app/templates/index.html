@@ -1,28 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Language Translator</title>
-    <link rel="stylesheet" href="/static/style.css">
 </head>
 <body>
-    <h1>Language Translator</h1>
-    <form method="POST" action="/translate">
-        <label for="sourceText">Enter text to translate:</label><br>
-        <textarea id="sourceText" name="sourceText" rows="4" cols="50" required></textarea><br><br>
-
-        <label for="sourceLang">Select source language:</label>
-        <input id="sourceLang" name="sourceLang" placeholder="e.g., en (English)" required><br><br>
-
-        <label for="targetLang">Select target language:</label>
-        <input id="targetLang" name="targetLang" placeholder="e.g., es (Spanish)" required><br><br>
-
+    <h1>Text Translator</h1>
+    <form method="post" action="/translate">
+        <textarea name="sourceText" rows="4" cols="50">{{ source_text }}</textarea><br>
+        Source Language: <input type="text" name="sourceLang" value="en"><br>
+        Target Language: <input type="text" name="targetLang" value="es"><br>
         <button type="submit">Translate</button>
     </form>
-    {% if source_text %}
-        <h2>Original Text:</h2>
-        <p>{{ source_text }}</p>
+    {% if translated_text %}
         <h2>Translated Text:</h2>
         <p>{{ translated_text }}</p>
     {% endif %}
