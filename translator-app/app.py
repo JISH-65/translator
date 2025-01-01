@@ -10,7 +10,7 @@ translate = boto3.client('translate')
 def index():
     return render_template('index.html')
 
-@app.route('/translate', methods=['POST'])
+@app.route('/translate', methods=['GET', 'POST'])
 def translate_text():
     source_text = request.form['sourceText']
     source_lang = request.form['sourceLang']
