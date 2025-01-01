@@ -4,13 +4,13 @@ import boto3
 app = Flask(__name__)
 
 # AWS Translate client
-translate = boto3.client('translate')
+translate = boto3.client('translate', region_name='us-east-1')  # You can change the region as needed
 
 @app.route('/')
 def index():
     return render_template('index.html')
 
-@app.route('/translate', methods=['GET', 'POST'])
+@app.route('/translate', methods=['POST'])
 def translate_text():
     source_text = request.form['sourceText']
     source_lang = request.form['sourceLang']
